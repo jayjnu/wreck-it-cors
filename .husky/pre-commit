@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-CI=true npm test
+yarn test --watchAll=false
 npx lint-staged
