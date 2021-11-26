@@ -1,6 +1,6 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { FC } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { AppLayout, FooterContents, HeaderContents } from './core/components';
 import { theme } from './core/theme';
@@ -15,7 +15,8 @@ const App: FC = () => {
         header={<HeaderContents />}
         main={
           <Routes>
-            <Route path="/" element={<SameOriginValidator />} />
+            <Route path="/" element={<Navigate to="/origin-validator" replace />} />
+            <Route path="/origin-validator" element={<SameOriginValidator />} />
             <Route path="/fetch" element={<Form />} />
           </Routes>
         }
