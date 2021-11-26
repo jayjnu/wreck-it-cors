@@ -1,14 +1,6 @@
 import { styled, Typography } from '@mui/material';
 import { memo } from 'react';
 
-type LogoSizeValues = 'small' | 'medium' | 'large';
-
-const SIZE_MAP: Record<LogoSizeValues, number> = {
-  small: 1,
-  medium: 2,
-  large: 3
-};
-
 const TypographyWithSize = styled(Typography)(({ theme }) => ({
   color: 'rgb(239,39,44)',
   fontFamily: 'Wreck It',
