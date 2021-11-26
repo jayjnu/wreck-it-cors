@@ -1,19 +1,21 @@
 import { parseUrl } from './parseUrl';
 
-const isSameHostname = (a: URL, b: URL) => a.hostname === b.hostname;
-const isSameProtocol = (a: URL, b: URL) => a.protocol === b.protocol;
-const isSamePort = (a: URL, b: URL) => a.port === b.port;
+type ValidatorFunction = (a: URL, b: URL) => boolean;
 
-class ValidationDTO {
+const isSameHostname: ValidatorFunction = (a, b) => a.hostname === b.hostname;
+const isSameProtocol: ValidatorFunction = (a, b) => a.protocol === b.protocol;
+const isSamePort: ValidatorFunction = (a, b) => a.port === b.port;
+
+export class ValidationDTO {
   hostname = true;
   protocol = true;
   port = true;
 
-  invalidate(target: 'hostname' | 'protocol' | 'port') {
+  invalidate(target: 'hostname' | 'protocol' | 'port'): void {
     this[target] = false;
   }
 
-  get isValid() {
+  get isValid(): boolean {
     return this.hostname && this.protocol && this.port;
   }
 }
