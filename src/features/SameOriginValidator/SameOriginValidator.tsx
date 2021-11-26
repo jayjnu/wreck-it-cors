@@ -25,7 +25,7 @@ type FormData = {
 export const SameOriginValidator: FC = () => {
   const [validationResult, setValidationResult] = useState<boolean | null>(null);
   const { handleSubmit, control, formState, reset } = useForm({
-    mode: 'onBlur'
+    mode: 'onChange'
   });
 
   const onSubmit = useCallback((formData: FormData) => {
