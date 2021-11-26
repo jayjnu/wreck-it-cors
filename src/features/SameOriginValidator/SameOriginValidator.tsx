@@ -25,7 +25,11 @@ type FormData = {
 export const SameOriginValidator: FC = () => {
   const [validationResult, setValidationResult] = useState<boolean | null>(null);
   const { handleSubmit, control, formState, reset } = useForm({
-    mode: 'onChange'
+    mode: 'onChange',
+    defaultValues: {
+      origin: '',
+      source: ''
+    }
   });
 
   const onSubmit = useCallback((formData: FormData) => {
@@ -43,7 +47,6 @@ export const SameOriginValidator: FC = () => {
               name="origin"
               control={control}
               rules={urlFieldRules}
-              defaultValue=""
               render={({ field, fieldState }) => {
                 return (
                   <ValidTextField
@@ -66,7 +69,6 @@ export const SameOriginValidator: FC = () => {
               name="source"
               control={control}
               rules={urlFieldRules}
-              defaultValue=""
               render={({ field, fieldState }) => {
                 return (
                   <ValidTextField
