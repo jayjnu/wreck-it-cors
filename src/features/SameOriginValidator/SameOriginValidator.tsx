@@ -29,8 +29,8 @@ export const SameOriginValidator: FC = () => {
   });
 
   const onSubmit = useCallback((formData: FormData) => {
-    const isSame = isSameOrigin(formData.source, formData.origin);
-    setValidationResult(isSame);
+    const result = isSameOrigin(formData.source, formData.origin);
+    setValidationResult(result.isValid);
   }, []);
 
   return (
