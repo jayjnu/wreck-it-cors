@@ -1,5 +1,5 @@
+import { Stack, styled } from '@mui/material';
 import { Box } from '@mui/system';
-import { Stack } from '@mui/material';
 import { memo, ReactNode } from 'react';
 
 type FormLayoutProps = {
@@ -9,6 +9,10 @@ type FormLayoutProps = {
   submit: ReactNode;
 };
 
+const TitleWrapper = styled('div')(({ theme }) => ({
+  paddingBottom: theme.spacing(2)
+}));
+
 export const FormLayout = memo(function FormLayout({
   title,
   origin,
@@ -17,7 +21,7 @@ export const FormLayout = memo(function FormLayout({
 }: FormLayoutProps) {
   return (
     <Box>
-      <Box>{title}</Box>
+      <TitleWrapper>{title}</TitleWrapper>
       <Stack spacing={3}>
         <Box>{origin}</Box>
         <Box>{source}</Box>
